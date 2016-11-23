@@ -1,15 +1,23 @@
 % Startup script for MATLAB
 % make a link (ln -s) to this file in /usr/local/MATLAB/VER/toolbox/local/
+% Requires genpath_exclude which can be downloaded from matlab file
+% exchange
+% https://www.mathworks.com/matlabcentral/fileexchange/22209-genpath-exclude
 fprintf('Bingham Startup2.m\n');
 format compact
 
 % get rid of MEvent.  CASE! warning
 !synclient HorizEdgeScroll=0 HorizTwoFingerScroll=0
 
-% add paths recursively
-%frlboxdir = '/home/bsb/Projects/util/frlbox';
 frlboxdir = '/home/bsb/WorkingCopies/frlbox';
 exportfigdir = '/home/bsb/WorkingCopies/export_fig';
+
+% Add path to genpath_exclude before going forward
+epath = fullfile(frlboxdir,'base');
+addpath(epath);
+% add paths recursively
+%frlboxdir = '/home/bsb/Projects/util/frlbox%% (g)';
+
 DIRS = {frlboxdir,exportfigdir};
 for ii = 1:length(DIRS)
     edir = DIRS{ii};
