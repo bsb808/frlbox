@@ -1,5 +1,6 @@
 % Startup script for MATLAB
-% make a link (ln -s) to this file in /usr/local/MATLAB/VER/toolbox/local/
+% make a link (ln -s) to this file in /usr/local/MATLAB/[VER]/toolbox/local/
+% e.g.,  sudo ln -s ~/WorkingCopies/frlbox/startup.m startup.m
 fprintf('Bingham Startup.m\n');
 format compact
 
