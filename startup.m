@@ -1,20 +1,43 @@
 % Startup script for MATLAB
+<<<<<<< HEAD
 % make a link (ln -s) to this file in /usr/local/MATLAB/[VER]/toolbox/local/
 % e.g.,  sudo ln -s ~/WorkingCopies/frlbox/startup.m startup.m
 fprintf('Bingham Startup.m\n');
+=======
+% make a link (ln -s) to this file in /usr/local/MATLAB/VER/toolbox/local/
+% Requires genpath_exclude which can be downloaded from matlab file
+% exchange
+% https://www.mathworks.com/matlabcentral/fileexchange/22209-genpath-exclude
+fprintf('Bingham Startup2.m\n');
+>>>>>>> c3b645d1d8575c7846522f4f9c572296d94ddf60
 format compact
 
+% get rid of MEvent.  CASE! warning
+!synclient HorizEdgeScroll=0 HorizTwoFingerScroll=0
+
+frlboxdir = '/home/bsb/WorkingCopies/frlbox';
+exportfigdir = '/home/bsb/WorkingCopies/export_fig';
+
+% Add path to genpath_exclude before going forward
+epath = fullfile(frlboxdir,'base');
+addpath(epath);
 % add paths recursively
-%frlboxdir = '/home/bsb/Projects/util/frlbox';
-frlboxdir = '/home/bsb/WorkingCopies/frl/util/frlbox';
-if exist(frlboxdir)~=7
-    fprintf('The directory <%s> does not appear to exist, so not adding path\n',frlboxdir);
-else
-    fprintf('Adding <%s> to path, recursively\n',frlboxdir);
-    gendir = fullfile(frlboxdir,'generic');
-    addpath(gendir); % adding path for the genpath_generic function
-    pstr = genpath_exclude(frlboxdir,'.svn');
-    addpath(pstr);
+%frlboxdir = '/home/bsb/Projects/util/frlbox%% (g)';
+
+DIRS = {frlboxdir,exportfigdir};
+for ii = 1:length(DIRS)
+    edir = DIRS{ii};
+    if exist(edir)~=7
+        fprintf('The directory <%s> does not appear to exist, so not adding path\n',edir);
+    else
+        fprintf('Adding <%s> to path, recursively\n',edir);
+        %gendir = fullfile(edir,'generic');
+        gendir = edir;
+        addpath(gendir); % adding path for the genpath_generic function
+        pstr = genpath_exclude(edir,{'.svn','.git'});
+        %pstr = genpath_exclude(edir,'.git');
+        addpath(pstr);
+    end
 end
 
 %cd '/home/bsb/NPS/Classes/me2801-f15'
