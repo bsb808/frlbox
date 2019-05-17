@@ -1,15 +1,11 @@
 % Startup script for MATLAB
-<<<<<<< HEAD
-% make a link (ln -s) to this file in /usr/local/MATLAB/[VER]/toolbox/local/
-% e.g.,  sudo ln -s ~/WorkingCopies/frlbox/startup.m startup.m
-fprintf('Bingham Startup.m\n');
-=======
+
 % make a link (ln -s) to this file in /usr/local/MATLAB/VER/toolbox/local/
 % Requires genpath_exclude which can be downloaded from matlab file
 % exchange
 % https://www.mathworks.com/matlabcentral/fileexchange/22209-genpath-exclude
 fprintf('Bingham Startup2.m\n');
->>>>>>> c3b645d1d8575c7846522f4f9c572296d94ddf60
+%>>>>>>> c3b645d1d8575c7846522f4f9c572296d94ddf60
 format compact
 
 % get rid of MEvent.  CASE! warning

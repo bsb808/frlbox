@@ -1,4 +1,4 @@
-function sketchbode(sys,overlayb)
+function sketchbode(sys,overlayb,ltype)
 %SKETCHBODE This function shows simple straight-line bode approximations
 %
 % HISTORY
@@ -8,38 +8,40 @@ function sketchbode(sys,overlayb)
 if nargin < 2
     overlayb = 1;
 end
+if nargin < 3
+    ltype = 'ro-';
+end
+[MagW, MagM] = magtrace(sys);
 
-    [MagW, MagM] = magtrace(sys);
+[PhsW, PhsP] = phasetrace(sys);
 
-    [PhsW, PhsP] = phasetrace(sys);
-    
-    if overlayb
-        [mm,pp,ww] = bode(sys);
-        subplot(211)
-        semilogx(ww,20*log10(squeeze(mm)),'b','linewidth',2);
-        hold on
-        subplot(212)
-        semilogx(ww,squeeze(pp),'b','linewidth',2);
-        hold on
-    end
-
-    %figaxes = get(gcf, 'Children');
-
-    %axes(figaxes(3));
+if overlayb
+    [mm,pp,ww] = bode(sys);
     subplot(211)
-    semilogx(MagW, MagM, 'ro-');
-    ylabel('Mag. [dB]')
-    title('Sketch Bode')
-    grid on
-    
-    %axes(figaxes(1));
+    semilogx(ww,20*log10(squeeze(mm)),'b','linewidth',2);
+    hold on
     subplot(212)
-    semilogx(PhsW, PhsP, 'ro-');
-    ylabel('Phase [deg]')
-    xlabel('Frequency [rad/s]')
-    %axis auto
-    axis tight
-    grid on
+    semilogx(ww,squeeze(pp),'b','linewidth',2);
+    hold on
+end
+
+%figaxes = get(gcf, 'Children');
+
+%axes(figaxes(3));
+subplot(211)
+semilogx(MagW, MagM, ltype);
+ylabel('Mag. [dB]')
+title('Sketch Bode')
+grid on
+
+%axes(figaxes(1));
+subplot(212)
+semilogx(PhsW, PhsP, ltype);
+ylabel('Phase [deg]')
+xlabel('Frequency [rad/s]')
+%axis auto
+axis tight
+grid on
 end
 
 
