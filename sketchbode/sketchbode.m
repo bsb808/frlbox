@@ -87,9 +87,12 @@ function [freq, phase] = phasetrace(sys)
     end
     x = fixfpe(x);
     x = union(x, x);
-    if (isinf(x(1)))
-        x = x(2:end);
+    if length(x) > 0
+        if (isinf(x(1)))
+            x = x(2:end);
+        end
     end
+    
     [BodeM, BodeP, BodeW] = bode(sys);
     x = [log10(BodeW(1)); x(:); log10(BodeW(end))];
 
