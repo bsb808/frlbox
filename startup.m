@@ -4,19 +4,22 @@
 % Requires genpath_exclude which can be downloaded from matlab file
 % exchange
 % https://www.mathworks.com/matlabcentral/fileexchange/22209-genpath-exclude
-fprintf('Bingham Startup2.m\n');
-%>>>>>>> c3b645d1d8575c7846522f4f9c572296d94ddf60
+fprintf('Bingham Startup 2.0\n');
 format compact
 
 % get rid of MEvent.  CASE! warning
-!synclient HorizEdgeScroll=0 HorizTwoFingerScroll=0
+% Maybe not necessary for 2019b
+%!synclient HorizEdgeScroll=0 HorizTwoFingerScroll=0
 
 frlboxdir = '/home/bsb/WorkingCopies/frlbox';
 exportfigdir = '/home/bsb/WorkingCopies/export_fig';
+genpathexclude2dir = '/home/bsb/WorkingCopies/matlab-genpath2';
 
-% Add path to genpath_exclude before going forward
-epath = fullfile(frlboxdir,'base');
+% Add path to genpath_exclude2 before going forward
+%epath = fullfile(frlboxdir,'base');
+epath = fullfile(genpathexclude2dir);
 addpath(epath);
+
 % add paths recursively
 %frlboxdir = '/home/bsb/Projects/util/frlbox%% (g)';
 
@@ -30,8 +33,8 @@ for ii = 1:length(DIRS)
         %gendir = fullfile(edir,'generic');
         gendir = edir;
         addpath(gendir); % adding path for the genpath_generic function
-        pstr = genpath_exclude(edir,{'.svn','.git'});
-        %pstr = genpath_exclude(edir,'.git');
+        pstr = genpath2(edir,{'.svn','.git'});
+        %pstr = genpath2(edir,'.git');
         addpath(pstr);
     end
 end
