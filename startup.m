@@ -40,3 +40,12 @@ for ii = 1:length(DIRS)
 end
 
 %cd '/home/bsb/NPS/Classes/me2801-f15'
+
+% Necessary for saving MLX files in older versions of MATLAB on linux
+% See - https://www.mathworks.com/matlabcentral/answers/1820980-error-when-saving-mlx-file
+clear all 
+tempdir  % ans = '/tmp/' 
+mkdir matlabtmp
+setenv('TMPDIR', '~/matlabtmp') 
+clear all 
+tempdir % ans = 'FILE DIRECTORY FOR THE NEW FOLDER'  
