@@ -1,5 +1,14 @@
-function exfig(dpi,fname)
-% Short script for using the export_fig function
+function exfig(dpi, fname)
+%EXFIG  Wrapper function for using the EXPORT_FIG function for PNG file.
+%   Sets default options for EXPORT_FIG and sets background color to white.
+%   Exports as PNG file.
+%   
+%   EXFIG Prompts for a file name and exports with 300 dpi.
+%   EXFIG(DPI) Exports figure as file with resolution of DPI
+%       DPI as integer (default is 300)
+%   EXFIG(DPI, FNAME) FNAME should not include .png extension.
+% 
+% Part of custom frlbox toolbox: https://github.com/bsb808/frlbox
 %
 % Requires the export_fig function be 'installed'.  The function is
 % available from the Mathworks File Exchange
@@ -14,6 +23,9 @@ function exfig(dpi,fname)
 % 
 % Execute pubfig.m to set the default font size before creating the plot.
 % This will alow you to make the fonts more readable.
+%
+% See Also: EXPORT_FIG, PUBFIG
+
 if (nargin < 1)
     dpi=300;
 end
