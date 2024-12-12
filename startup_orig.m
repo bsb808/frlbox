@@ -43,10 +43,9 @@ end
 
 % Necessary for saving MLX files in older versions of MATLAB on linux
 % See - https://www.mathworks.com/matlabcentral/answers/1820980-error-when-saving-mlx-file
-% For 2024b, this messes up MATLAB!!!!
-% clear all 
-% tempdir  % ans = '/tmp/' 
-% mkdir matlabtmp
-% setenv('TMPDIR', '~/matlabtmp') 
-% clear all 
-% tempdir % ans = 'FILE DIRECTORY FOR THE NEW FOLDER'  
+clear all 
+tempdir  % ans = '/tmp/' 
+mkdir matlabtmp
+setenv('TMPDIR', '~/matlabtmp') 
+clear all 
+tempdir % ans = 'FILE DIRECTORY FOR THE NEW FOLDER'  
